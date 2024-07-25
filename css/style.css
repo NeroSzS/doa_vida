@@ -256,3 +256,66 @@ body {
   height: 100%;
   width: 100%;
 }
+/* Fim Carteira do Doador */
+/* Estilizando Tela de Cadastro */
+
+#conteudo-cadastro {
+  max-width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#conteudo-cadastro > h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#cadastroForm  > label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#cadastroForm > #conteudo-sexo,#cadastroForm > #conteudo-sanguineo {
+  display: flex;
+  gap: 30px;
+}
+
+#cadastroForm > input[type="text"],
+#cadastroForm > input[type="email"],
+#cadastroForm > input[type="password"],
+#cadastroForm > select {
+  width: calc(100% - 12px);
+  padding: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#cadastroForm  > #conteudo-sexo, #cadastroForm  > input[type="date"] {
+  margin-bottom: 20px;
+}
+
+#cadastroForm > input[type="tel"] {
+  padding: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#cadastroForm > input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+#cadastroForm > input[type="submit"]:hover {
+  background-color: #45a049;
+}
