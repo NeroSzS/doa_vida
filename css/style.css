@@ -8,6 +8,7 @@
 
 :root {
   --cor-vermelha: #ff3131;
+  --cor-vermelho-escuro: #8a1313;
   --cor-preta: black;
   --cor-branca: white;
 }
@@ -261,7 +262,7 @@ body {
 
 #conteudo-cadastro {
   max-width: 600px;
-  background-color: #fff;
+  background-color: var(--cor-branca);
   padding: 20px;
   margin: 0 auto;
   border-radius: 8px;
@@ -291,7 +292,7 @@ body {
   width: calc(100% - 12px);
   padding: 6px;
   margin-bottom: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--cor-preta);
   border-radius: 4px;
 }
 
@@ -302,13 +303,13 @@ body {
 #cadastroForm > input[type="tel"] {
   padding: 6px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--cor-branca);
   border-radius: 4px;
 }
 
 #cadastroForm > input[type="submit"] {
   background-color: #4CAF50;
-  color: white;
+  color: var(--cor-branca);
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -319,3 +320,112 @@ body {
 #cadastroForm > input[type="submit"]:hover {
   background-color: #45a049;
 }
+/* Fim Tela de Cadastro */
+/* Estilizando Tela de Login */
+#conteudo-login {
+  background-color: #ff3131;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  max-width: 100%;
+  gap: 100px;
+  padding: 50px;
+  font-family: "Open Sans", sans-serif;
+}
+
+#gif-login {
+  height: auto;
+  width: 80%;
+}
+
+#conteudo-formLogin {
+  color: var(--cor-branca);
+  height: auto;
+  width: 50%;
+  text-align: center;
+}
+
+#conteudo-formLogin a {
+  color: var(--cor-branca);
+}
+
+#formLogin {
+  width: 100%;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-branca);
+  font-size: 1.25rem;
+  border-radius: 30px;
+  border: 3px solid var(--cor-branca);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#formLogin label {
+  display: block;
+  margin-bottom: 5px;
+  font-family: "Open Sans", sans-serif;
+} 
+
+#conteudo-input-emailLogin, #conteudo-input-senhaLogin{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+#formLogin input {
+  background-color: transparent;
+  border-radius: 30px;
+  border: 2px solid var(--cor-branca);
+  outline: none;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  color: var(--cor-branca);
+  font-size: 1.25rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+#conteudo-input-lembrarLogin, #lembarInput {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+#conteudo-input-lembrarLogin {
+  width: 80%;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#lembarInput {
+  justify-content: center;
+  align-items: center;
+}
+
+#lembarInput > input {
+  width: 20px;
+}
+
+#formLogin button {
+  background-color: var(--cor-vermelho-escuro);
+  border: none;
+  padding: 15px;
+  width: 50%;
+  border-radius: 20px;
+  color: var(--cor-branca);
+  font-size: 15px;
+  font-family: "Open Sans", sans-serif;
+}
+
+#formLogin > button:hover {
+  background-color: var(--cor-preta);
+  cursor: pointer;
+}
+/* Fim Tela de Login */
