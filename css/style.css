@@ -259,25 +259,36 @@ body {
 }
 /* Fim Carteira do Doador */
 /* Estilizando Tela de Cadastro */
-
 #conteudo-cadastro {
+  width: 100%;
+  padding: 20px;
+  background-color: var(--cor-vermelha);
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+#conteudo-cadastro > h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--cor-branca);
+}
+
+#conteudo-cadastro  a {
+  color: var(--cor-preta);
+}
+
+#cadastroForm {
   max-width: 600px;
   background-color: var(--cor-branca);
   padding: 20px;
   margin: 0 auto;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#conteudo-cadastro > h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+} 
 
 #cadastroForm  > label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
 }
 
 #cadastroForm > #conteudo-sexo,#cadastroForm > #conteudo-sanguineo {
@@ -296,19 +307,19 @@ body {
   border-radius: 4px;
 }
 
-#cadastroForm  > #conteudo-sexo, #cadastroForm  > input[type="date"] {
+#cadastroForm  > #conteudo-sexo, #cadastroForm  > input[type="date"], #conteudo-sanguineo {
   margin-bottom: 20px;
 }
 
 #cadastroForm > input[type="tel"] {
   padding: 6px;
   margin-bottom: 10px;
-  border: 1px solid var(--cor-branca);
+  border: 1px solid var(--cor-preta);
   border-radius: 4px;
 }
 
 #cadastroForm > input[type="submit"] {
-  background-color: #4CAF50;
+  background-color: var(--cor-vermelho-escuro);
   color: var(--cor-branca);
   padding: 10px 20px;
   border: none;
@@ -318,12 +329,12 @@ body {
 }
 
 #cadastroForm > input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: var(--cor-preta);
 }
 /* Fim Tela de Cadastro */
 /* Estilizando Tela de Login */
 #conteudo-login {
-  background-color: #ff3131;
+  background-color: var(--cor-vermelha);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
@@ -331,8 +342,8 @@ body {
   align-items: center;
   height: 100%;
   max-width: 100%;
-  gap: 100px;
-  padding: 50px;
+  gap: 20px;
+  padding: 20px;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -404,13 +415,12 @@ body {
   margin-bottom: 30px;
 }
 
-#lembarInput {
-  justify-content: center;
-  align-items: center;
-}
-
 #lembarInput > input {
   width: 20px;
+}
+
+#formLogin #lembar-login {
+  margin: auto;
 }
 
 #formLogin button {
