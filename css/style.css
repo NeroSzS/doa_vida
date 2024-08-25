@@ -11,18 +11,22 @@
   --cor-vermelho-escuro: #8a1313;
   --cor-preta: black;
   --cor-branca: white;
-  --cor-cinza: rgb(63, 63, 63);
+  --cor-cinza-escuro: rgb(63, 63, 63);
+  --cor-cinza-claro: #aaa;
+  --font-open-sans: "Open Sans", sans-serif;
 }
 
-body {
+body,
+html {
   max-width: 100vw;
   height: 100vh;
 }
 
 #conteudo-principal {
-  max-width: 100%;
-  height: 100%;
-  display: flex;
+  min-height: calc(100vh - 60px);
+  margin-top: 60px;
+  margin-left: 250px;
+  padding: 20px;
 }
 
 /* Estilizando o Menu Lateral */
@@ -32,10 +36,15 @@ body {
   justify-content: space-between;
   max-height: 100%;
   max-width: 320px;
-  padding: 50px 10px 50px 0px;
+  padding: 20px 10px 20px 0px;
   border-right: 2px solid var(--cor-vermelha);
+  background-color: var(--cor-branca);
   color: var(--cor-vermelha);
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
 }
 
 #logo-doe-vida {
@@ -60,6 +69,16 @@ body {
   padding: 10px 0;
 }
 
+.btn-sair {
+  text-align: center;
+  border: none;
+}
+
+.btn-sair > a {
+  text-decoration: none;
+  color: var(--cor-vermelha);
+}
+
 .link-menu-lateral {
   display: flex;
   align-items: center;
@@ -78,39 +97,24 @@ body {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
-
-.ativo {
-  background-color: var(--cor-vermelha); /* Add an active/current color */
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-.ativo > .link-menu-lateral {
-  color: var(--cor-branca);
-}
-
-.ativo .icon-menu-lateral {
-  filter: brightness(0) saturate(100%) invert(99%) sepia(0%) saturate(7498%)
-    hue-rotate(103deg) brightness(112%) contrast(100%);
-}
 /* Fim do Menu Lateral */
 
 /* Estilizando o Menu Superior */
-#div-tela-inical {
-  max-height: 100vh;
-  width: 100vw;
-}
-
-#cabecalho-tela-inicial {
-  max-width: 100%;
+#menu-superior {
+  width: calc(100% - 250px);
   height: 100px;
   padding: 10px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid var(--cor-vermelha);
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans);
   color: var(--cor-vermelha);
+  background-color: var(--cor-branca);
+  position: fixed;
+  top: 0;
+  left: 250px;
+  z-index: 1000;
 }
 
 #btn-perfil-usuario {
@@ -163,8 +167,8 @@ body {
 
 /* Fim Carrossel de Campanhas */
 
-/* Estilizando Carteira do Doador */
-#conteudo-carteira-doador {
+/* Estilizando Doacoes Agendadas */
+#conteudo-doacoes-agendadas {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -175,92 +179,14 @@ body {
   gap: 20px;
 }
 
-#carteira-doador {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-#conteudo-carteira-doador > h1 {
-  font-family: "Open Sans", sans-serif;
+#conteudo-doacoes-agendadas > h1 {
+  font-family: var(--font-open-sans);
   font-size: 3rem;
   color: var(--cor-vermelha);
 }
 
-#carteira-doador-frente,
-#dados-verso-carteira {
-  max-width: 400px;
-  max-height: 300px;
-}
+/* Fim Doacoes Agendadas */
 
-#carteira-doador-frente > img,
-#dados-verso-carteira > img {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-}
-
-#dados-verso-carteira {
-  position: relative;
-  display: flex;
-}
-
-#dados-carteira {
-  position: absolute;
-  text-align: center;
-  padding: 10px;
-  top: 12%;
-  right: 3%;
-}
-
-#conteudo-cod-barra-carteira {
-  display: flex;
-  align-items: start;
-  padding: 5px;
-  gap: 10px;
-}
-
-#dados-cod-barra-carteira {
-  flex-direction: column;
-}
-
-#dados-carteira > h1,
-#dados-carteira > h2 {
-  font-size: 1.55rem;
-  color: var(--cor-branca);
-}
-
-#conteudo-cod-barra-carteira img {
-  max-height: 50px;
-}
-
-#conteudo-cod-barra-carteira h2 {
-  font-size: 1rem;
-  color: var(--cor-branca);
-}
-
-#conteudo-cod-barra-carteira #tipo-sanguineo-carteira {
-  font-size: 3rem;
-  color: var(--cor-branca);
-}
-
-#containerBtn {
-  max-width: 50px;
-  max-height: 50px;
-  margin-left: 20px;
-}
-
-#btn-baixar-carteira {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-#btn-baixar-carteira > img {
-  height: 100%;
-  width: 100%;
-}
-/* Fim Carteira do Doador */
 /* Estilizando Tela de Login */
 #conteudo-login {
   background-color: var(--cor-vermelha);
@@ -273,7 +199,7 @@ body {
   max-width: 100%;
   gap: 20px;
   padding: 20px;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans);
 }
 
 #gif-login {
@@ -310,7 +236,7 @@ body {
 #formLogin label {
   display: block;
   margin-bottom: 5px;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans);
 }
 
 #conteudo-input-emailLogin,
@@ -331,7 +257,7 @@ body {
   margin-bottom: 20px;
   color: var(--cor-branca);
   font-size: 1.25rem;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans);
 }
 
 #conteudo-input-lembrarLogin,
@@ -362,7 +288,7 @@ body {
   border-radius: 20px;
   color: var(--cor-branca);
   font-size: 15px;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans);
 }
 
 #formLogin > button:hover {
@@ -375,7 +301,7 @@ body {
   width: 100%;
   padding: 20px;
   background-color: var(--cor-vermelha);
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans);
   font-weight: bold;
 }
 
@@ -389,7 +315,8 @@ body {
   color: var(--cor-preta);
 }
 
-#cadastroForm {
+#cadastroForm,
+#form-editarPerfil {
   max-width: 800px;
   background-color: var(--cor-branca);
   padding: 20px;
@@ -398,13 +325,16 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#cadastroForm > label {
+#cadastroForm > label,
+#form-editarPerfil > label {
   display: block;
   margin-bottom: 5px;
 }
 
 #cadastroForm > #conteudo-sexo,
-#cadastroForm > #conteudo-sanguineo {
+#cadastroForm > #conteudo-sanguineo,
+#form-editarPerfil > #conteudo-sexo,
+#form-editarPerfil > #conteudo-sanguineo {
   display: flex;
   gap: 30px;
 }
@@ -412,7 +342,10 @@ body {
 #cadastroForm > input[type="text"],
 #cadastroForm > input[type="email"],
 #cadastroForm > input[type="password"],
-#cadastroForm > select {
+#cadastroForm > select,
+#form-editarPerfil > input[type="text"],
+#form-editarPerfil > input[type="email"],
+#form-editarPerfil > select {
   width: calc(100% - 12px);
   padding: 6px;
   margin-bottom: 20px;
@@ -422,18 +355,23 @@ body {
 
 #cadastroForm > #conteudo-sexo,
 #cadastroForm > input[type="date"],
+#conteudo-sanguineo,
+#form-editarPerfilm > #conteudo-sexo,
+#form-editarPerfil > input[type="date"],
 #conteudo-sanguineo {
   margin-bottom: 20px;
 }
 
-#cadastroForm > input[type="tel"] {
+#cadastroForm > input[type="tel"],
+#form-editarPerfil > input[type="tel"] {
   padding: 6px;
   margin-bottom: 10px;
   border: 1px solid var(--cor-preta);
   border-radius: 4px;
 }
 
-#cadastroForm > input[type="submit"] {
+#cadastroForm > input[type="submit"],
+#form-editarPerfil > input[type="submit"] {
   background-color: var(--cor-vermelho-escuro);
   color: var(--cor-branca);
   padding: 10px 20px;
@@ -444,17 +382,20 @@ body {
 }
 
 #cadastroForm > input[type="submit"]:hover,
-#form_editarPerfil > input[type="submit"]:hover {
+#form_editarPerfil > input[type="submit"]:hover,
+#form-editarPerfil > input[type="submit"]:hover {
   background-color: var(--cor-preta);
 }
 /* Fim Tela de Cadastro */
 /* Estilizando Tela de Perfil */
-#conteudo_perfil {
+#conteudo_perfil,
+#conteudo-editarPerfil {
   max-width: 100vw;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans);
 }
 
-#title_perfil {
+#title_perfil,
+#title_editarPerfil {
   text-align: center;
   color: var(--cor-vermelha);
   font-size: 3rem;
@@ -479,7 +420,7 @@ body {
 #div_dados_autoDeclarados_perfil {
   width: 100%;
   height: 100%;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans);
 }
 
 #div_dados_pessoais_perfil {
@@ -496,7 +437,7 @@ body {
   font-size: 1rem;
   font-weight: bold;
   margin: 0px 20px;
-  color: var(--cor-cinza);
+  color: var(--cor-cinza-escuro);
 }
 
 #form_editarPerfil {
@@ -514,18 +455,14 @@ body {
   flex-direction: column;
 }
 
-.edit_button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+#footer_editar_perfil {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
 }
 
-#icon_editar_perfil {
-  height: 40px;
-  margin-right: 20px;
-}
-
+#footer_editar_perfil > #btn-editarPerfil,
 #footer_editar_perfil > input[type="submit"] {
   background-color: var(--cor-vermelho-escuro);
   color: var(--cor-branca);
@@ -533,17 +470,14 @@ body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 20px;
   font-size: 1.2rem;
+  text-align: center;
+  text-decoration: none;
   width: 50%;
 }
 
-#footer_editar_perfil {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 40px;
-}
+/* Tela de Editar Perfil */
+
 /* Fim Tela de Perfil */
 /* Estilizando Tela de Perguntas */
 #conteudo_faqs {
@@ -552,7 +486,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 40px;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans);
 }
 
 #titulo_faqs {
@@ -624,6 +558,12 @@ body {
 }
 /* Fim Tela de Perguntas */
 /* Estilizando a Tela de Campanhas */
+#conteudo-campanhas,
+#conteudo-mostrarCampanha {
+  max-width: 100vw;
+  max-height: 100%;
+}
+
 #cabecalho_addCampanhas {
   max-width: 100%;
   display: flex;
@@ -633,41 +573,71 @@ body {
   padding: 0px 30px;
 }
 
+#conteudo-mostrarCampanha > #cabecalho_addCampanhas {
+  justify-content: center;
+}
+
+#div_campanhas {
+  max-width: 100vw;
+  max-height: 100%;
+
+  display: flex;
+  padding: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card_campanhas {
+  max-width: 400px;
+  cursor: pointer;
+}
+
+.img_campanhas {
+  border: solid 2px var(--cor-vermelha);
+  border-radius: 20px;
+  max-width: 100%;
+}
+
 .title_campanhas {
   text-align: center;
   font-size: 3rem;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans);
   color: var(--cor-vermelha);
 }
 
+.title_novaCampanha {
+  margin: 70px 0px 20px 0px;
+}
+
+#form_novaCampanha {
+  max-width: 100vw;
+  max-height: 100%;
+}
+
 #btn_add_campanha > img {
-  height: 3rem;
+  height: 50px;
 }
 
-#picture_input {
-  display: none;
-}
-
-.upload {
+.upload_img_novaCampanha {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  top: 1rem;
 }
 
 .picture {
-  width: 700px;
+  width: 600px;
   aspect-ratio: 16 / 9;
-  background: #DDD;
+  background: #ddd;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #aaa;
+  color: var(--cor-cinza-claro);
   border: 2px dashed currentColor;
   cursor: pointer;
   border-radius: 2rem;
-  overflow: hidden; 
+  overflow: hidden;
   position: relative;
 }
 
@@ -676,13 +646,17 @@ body {
   background: #ccc;
 }
 
+#picture_input {
+  display: none;
+}
+
 .picture_img {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute; /* Faz com que a imagem se ajuste ao contêiner */
+  position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
@@ -700,362 +674,140 @@ body {
   object-fit: cover; /* Ajusta a imagem para cobrir o contêiner */
 }
 
+#form_novaCampanha {
+  padding: 20px;
+}
+
 .dados_campanha {
   display: flex;
   flex-direction: column;
   gap: 25px; /* Espaçamento entre os grupos do formulário */
+  align-items: center;
+  margin-top: 40px;
 }
 
 .form-group {
   display: flex;
-  align-items: center;
-  gap: 5px; /* Espaçamento entre o ícones e os inputs */
-position: relative;
-top: 4rem;
-margin-left: 15rem;
-}
-
-.form-group label {
-  display: block;
-  width: 14%;
-  float:left;
-  font-size: 20px;
+  align-items: flex-end;
+  gap: 50px; /* Espaçamento entre o ícones e os inputs */
+  font-family: var(--font-open-sans);
+  font-size: 1.5rem;
   color: var(--cor-vermelha);
-  font-weight: bold;
-
-}
-#titulo{
-  width: 600px;
 }
 
+.input-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espaçamento entre o ícones e os inputs */
+}
 
 .form-group input {
   padding: 10px;
-  font-size: 1.3rem;
-  border: 1px solid #ccc;
+  font-size: 1rem;
+  color: var(--cor-vermelha);
+  border: 1px solid var(--cor-vermelha);
   border-radius: 5px;
   width: 400px;
-
 }
 
-.icon_campanha {
-  width: 24px; 
-  height: 24px; 
-}
-#form-tipo{
-  display: block;
-  width: 6.9REM;
-  position: relative;
-  margin-left: 67rem;
-  top: -11rem;
-  font-size: 40PX;
-  font-weight: bolder;
+#input-tipoSanguineo,
+.input_agendamento {
+  border: 1px solid var(--cor-vermelha);
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px;
   color: var(--cor-vermelha);
 }
-.submit-button {
+
+.btn-cadastarCampanha,
+.btn_agendamento {
   background-color: var(--cor-vermelha);
-  border: none;
-  display: flex;
-  color: white;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  position: relative;
-  top: 3rem;
-  padding: 1rem 2rem;
+  color: var(--cor-branca);
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  padding: 10px;
+  border: none;
+  border-radius: 32px;
   cursor: pointer;
-  border-radius: 2rem;
   transition: background-color 0.3s;
+  width: 150px;
+  height: 50px;
 }
 
-.submit-button:hover {
-  background-color: #ccc;
-
+.btn-cadastarCampanha:hover,
+.btn_agendamento:hover {
+  background-color: var(--cor-vermelho-escuro);
 }
-
-@media (max-width: 700px) {
-  .title {
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--cor-vermelha);
-    margin-top: 1rem;
-    font-size: 20px;
-  }
-  
-  .picture {
-    width: 300px;
-    aspect-ratio: 16 / 9;
-    background: #DDD;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #aaa;
-    border: 2px dashed currentColor;
-    cursor: pointer;
-    border-radius: 2rem;
-    overflow: hidden; 
-    position: relative;
-    top: -1rem;
-  }
-  .form-group {
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Espaçamento entre o ícones e os inputs */
-  position: relative;
-  top: 4rem;
-  margin-left: 1rem;
-  }
-  
-  .form-group label {
-    display: block;
-    width: 33%;
-    float:left;
-    font-size: 12px;
-    color: var(--cor-vermelha);
-    font-weight: bold;
-  
-  }
-  #titulo{
-    width: 240px;
-  }
-  
-  
-  .form-group input {
-    padding: 10px;
-    font-size: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 200px;
-    height: 1.8rem;
-  
-  }
-  #form-tipo{
-    display: block;
-    width: 3.6REM;
-    height: 1.7rem;
-    position: relative;
-justify-content: center;
-align-items: center;
-margin: auto;
-    top: -11rem;
-    font-size: 18PX;
-    font-weight: bolder;
-    color: var(--cor-vermelha);
-  }
-  .submit-button {
-    background-color: var(--cor-vermelha);
-    border: none;
-    display: flex;
-    color: white;
-    
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    position: relative;
-    top: 1rem;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 2rem;
-    transition: background-color 0.3s;
-  }
-}
-
-/*CSS das páginas de campanha*/
 
 /*CSS da página que exibe a campanha atual*/
-
-.texto-inicial {
-  text-align: center;
-  color: #ff3131;
-  font-size: 40px;
-  padding: 50px;
-  font-weight: bold;
-  font-family: "Open Sans", sans-serif;
-}
-
-.img-campanhas {
-  
-  align-items: center;
-  margin: auto;
+#conteudo-mostrarCampanha {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+#div_mostrarCampanha {
+  max-width: 600px;
   display: flex;
-  border-radius: 10px;
-  max-width: 100%;
-  width: 815px;
-  aspect-ratio: 16/6;
-  
-}
-
-.texto-final {
-  color: #ff3131;
-  position: relative;
-  left: 450px;
-  font-size: 20px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  
-}
-.tipo-sanguineo {
-  margin-left: 560px;
-  padding: 5px;
-  color: #ff3131;
-  font-size: 35px;
-  font-family: "Open Sans", sans-serif;
-  
-}
-
-.div-final-campanha {
-  display: flex;
-  position: relative;
-  
-}
-
-.links-campanha a{
-  text-decoration: none;
-  color: #ff3131;
-}
-
-.icones-campanhas{
-  vertical-align: middle;
-  width: 20px;
-  height: auto;
-  margin-right: 4px;
-}
-
-
-/* CSS da página que exibe as campanhas*/
-
-
-.texto-inicial-tela2 {
-  position: relative;
-  color: #ff3131;
-  font-size: 80px;
-  padding: 50px;
-  font-family: "Open Sans", sans-serif;
-  justify-content: space-between;
-  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: var(--font-open-sans);
+  color: var(--cor-vermelha);
   font-weight: bold;
 }
 
-#img-icon {
-  margin-right: 200px;
-  margin-top: 20px;
-  width: 100px;
-  height: 90px;
+#img_mostrarCampanha {
+  max-width: 600px;
 }
 
-#title_align{
-  margin-left: 9.5rem;
+#main-campanha {
+  display: flex;
+  max-width: 550px;
+  margin: 10px 0px;
 }
 
-.card{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 45px;
-  margin: 2rem auto;
-  max-width: 1200px;
-  cursor: pointer;
-    
+.nome_hospital {
+  font-size: 2rem;
 }
 
-.item {
-    
-  border-radius: 10px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  overflow: hidden; /* Garante que a imagem não saia dos limites do card */
+.tipo_sanguineoCampanha {
+  font-size: 3.5rem;
+  font-weight: bolder;
+}
+
+.paragrafo_campanha,
+#form_agendamento {
+  font-size: 1.5rem;
+}
+
+.paragrafo_campanha > a,
+.input_agendamento {
+  color: var(--cor-vermelha);
+}
+
+#form_agendamento {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
-  text-align: center;
-}
-
-.item img {
-  width: 100%;
-  height: auto;
-  max-height: 200px; /* Ajuste a altura máxima conforme necessário */
-  object-fit: cover; /* Garante que a imagem cubra o espaço disponível sem distorcer */
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  aspect-ratio: 11/6;
-}
-
-.item h3 {
-  font-size: 1rem;
-  color: var(--secundaria);
-}
-
-.item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 #7c7980;
-}
-
-
-/*Responsividade da página que exibe a campanha atual*/
-@media (min-width: 320px) and (max-width:780px) {
-
-
-.texto-inicial {
-  font-size:15px;
-  padding: 20px;
-}
-
-.img-campanhas {
-  width: 350px;
-  aspect-ratio: 16/9;
-  padding: 10px;
-}
-
-.texto-final {
-  left: 100px;
-  font-size: 10px;
-}
-.tipo-sanguineo {
-  margin-top: -25px;
-  margin-left: 90px;
-  padding: 20px;
-  font-size: 20px;
-}
-
-.icones-campanhas{
-  margin-right: 1px;
-}
-}
-
-/*Responsividade da página que exibe as campanhas*/
-@media (min-width: 320px) and (max-width:780px) {
-  
-  
-.texto-inicial-tela2 {
-  position: relative;
-  padding: 15px;
-  margin: 0 auto;
-  margin-top: 10px;  
-}
-#title_align{
-  margin-left: 2.5rem;
   margin-top: 20px;
-  font-size: 25px;
- 
+  gap: 10px;
 }
-#img-icon{
-  height: 30px;
-  width: 30px;
-  margin-top: 23px;
-  margin-right: 15px;
-    
+
+.inputs_grupo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
-.card{
-  max-width: 370px;
-  margin-top: 40px;  
-   
+
+.input_agendamento {
+  width: 200px;
 }
-.item {   
- border-radius: 20px;
- margin-top: -40px; 
+
+.btn_agendamento {
+  color: var(--cor-branca);
+  border-radius: 16px;
 }
-} 
+/*CSS das páginas de campanha*/

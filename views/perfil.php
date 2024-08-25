@@ -1,5 +1,12 @@
 <?php
-require_once '__cabecalho.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/views/__cabecalho.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/models/endereco.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/models/clinica_endereco.php';
+
+$resultado = Endereco::encontrarEnderecoId($_SESSION['id_doador']);
+
+$resultado_clinica = ClinicaEndereco::encontrarEnderecoPorClinica($_SESSION['$id_clinica']);
+
 ?>
 <main id="conteudo_perfil">
   <h1 id="title_perfil">Meu Perfil</h1>
@@ -9,19 +16,16 @@ require_once '__cabecalho.php';
       <h1 class="title_div_dados_perfil">Dados Pessoas</h1>
 
       <h2 id="title_nome_perfil" class="title_dados_perfil">Nome Civil</h2>
-      <p id="dados_nome_perfil" class="dados_perfil">Fulano</p>
+      <p id="dados_nome_perfil" class="dados_perfil"><?= $_SESSION['nome_doador'] ?></p>
 
       <h2 id="title_cpf_perfil" class="title_dados_perfil">CPF</h2>
-      <p id="dados_cpf_perfil" class="dados_perfil">000.000.000-00</p>
+      <p id="dados_cpf_perfil" class="dados_perfil"><?= $_SESSION['cpf'] ?></p>
 
       <h2 id="title_dataNascimento_perfil" class="title_dados_perfil">Data de Nascimento</h2>
-      <p id="dados_dataNascimento_perfil" class="dados_perfil">00/00/0000</p>
-
-      <h2 id="title_carteiraDoador_perfil" class="title_dados_perfil">Carteira de Doador</h2>
-      <p id="dados_carteiraDoador_perfil" class="dados_perfil">0000 0000 0000 0000</p>
+      <p id="dados_dataNascimento_perfil" class="dados_perfil"><?= $_SESSION['data_nascimento'] ?></p>
 
       <h2 id="title_tipoSangue_perfil" class="title_dados_perfil">Tipo Sanguíneo</h2>
-      <p id="dados_tipoSangue_perfil" class="dados_perfil">A+</p>
+      <p id="dados_tipoSangue_perfil" class="dados_perfil"><?= $_SESSION['tipo_sanguineo'] ?></p>
 
     </div>
 
@@ -31,32 +35,26 @@ require_once '__cabecalho.php';
         <div id="input_email_perfil" class="div_input_perfil">
           <div class="content_input_perfil">
             <h2 id="title_email_perfil" class="title_dados_perfil">E-mail</h2>
-            <p id="dados_email_perfil" class="dados_perfil">fulano123@mail.com</p>
+            <p id="dados_email_perfil" class="dados_perfil"><?= $_SESSION['email'] ?></p>
           </div>
-
-          <button class="edit_button"><img id="icon_editar_perfil" src="../imgs/edit.png" alt=""></button>
         </div>
 
         <div id="input_telefone_perfil" class="div_input_perfil">
           <div class="content_input_perfil">
             <h2 id="title_telefone_perfil" class="title_dados_perfil">Telefone</h2>
-            <p id="dados_telefone_perfil" class="dados_perfil">(98) 90000-0000</p>
+            <p id="dados_telefone_perfil" class="dados_perfil"><?= $_SESSION['telefone'] ?></p>
           </div>
-
-          <button class="edit_button"><img id="icon_editar_perfil" src="../imgs/edit.png" alt=""></button>
         </div>
 
         <div id="input_endereco_perfil" class="div_input_perfil">
           <div class="content_input_perfil">
             <h2 id="title_endereco_perfil" class="title_dados_perfil">Endereço</h2>
-            <p id="dados_endereco_perfil" class="dados_perfil">Rua do Passeio, Nº 120 - CEP: 65.010-000 - Centro - São Luís MA</p>
+            <p id="dados_endereco_perfil" class="dados_perfil"><?= $resultado['logradouro'] . ', nº ' . $resultado['numero'] . ', ' . $resultado['bairro'] . ', ' . $resultado['cep'] . ', ' . $resultado['cidade'] . '-' . $resultado['estado'] ?></p>
           </div>
-
-          <button class="edit_button"><img id="icon_editar_perfil" src="../imgs/edit.png" alt=""></button>
         </div>
 
         <div id="footer_editar_perfil">
-          <input type="submit" value="Salvar">
+          <a href="/doa_vida/views/editarDoador.php?id=<?= $_SESSION['id_doador'] ?>" id="btn-editarPerfil">Editar</a>
         </div>
       </form>
     </div>

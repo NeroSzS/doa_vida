@@ -1,5 +1,5 @@
 <?php
-require_once '__cabecalho.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/views/__cabecalho.php';
 ?>
 
 

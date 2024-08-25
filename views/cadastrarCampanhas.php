@@ -1,72 +1,85 @@
 <?php
-require_once '__cabecalho.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/views/__cabecalho.php';
 ?>
-<main id="conteudo-tela-inical">
-    <div class="title">
-        <h1>Nova Campanha</h1>
-    </div>
+<main id="conteudo-campanhas">
+    <h1 class="title_campanhas title_novaCampanha">Nova Campanha</h1>
 
-    <form name="dados_campanha" method="post" action="/doa_vida/controllers/cadastrar_campanhas_controller.php" enctype="multipart/form-data">
-        <div class="upload">
+    <form name="dados_campanha" method="post" action="/doa_vida/controllers/cadastrar_campanhas_controller.php" enctype="multipart/form-data" id="form_novaCampanha">
+        <div class="upload_img_novaCampanha">
             <label class="picture" tabindex="0">
-                <input type="file" accept="image/*" id="picture_input" onchange="displayImage(this)" name="imagem_campanha">
+                <input required type="file" accept="image/*" id="picture_input" onchange="displayImage(this)" name="imagem_campanha">
                 <span class="picture_img">
-                    <img src="./imgs/upload.png" alt="Upload Icon" id="uploaded_image" class="default_image">
+                    <img src="/doa_vida/imgs/upload.png" alt="Upload Icon" id="uploaded_image" class="default_image">
                 </span>
             </label>
         </div>
 
         <div class="dados_campanha">
         <div class="form-group">
-                <label for="hospital">Hospital:</label>
-                <input type="text" name="hospital" id="hospital">
-            </div>
+                <div class="input-grupo">
+                    <label for="hospital">Hospital:</label>
+                    <input required type="text" name="hospital" id="hospital">
+                </div>
 
-            <div class="form-group">
-                <label for="nome_campanha">Nome da Campanha:</label>
-                <input type="text" name="nome_campanha" id="nome_campanha">
+                <div class="input-grupo">
+                    <label for="nome_campanha">Nome da Campanha:</label>
+                    <input required type="text" name="nome_campanha" id="nome_campanha">
+                </div>
             </div>
             
             <div class="form-group">
-                <label for="descricao">Descricao:</label>
-                <input type="text" name="descricao" id="descricao">
+                <div class="input-grupo">
+                    <label for="descricao">Descricao:</label>
+                    <input required type="text" name="descricao" id="descricao">
+                </div>
             </div>
             
             <div class="form-group">
-                <img class="icon_campanha" src="./imgs/o-email.png" alt="">
-                <label for="email_campanha">E-mail para contato:</label>
-                <input type="email" name="email_campanha" id="email_campanha">
+                <div class="input-grupo">
+                    <label for="email_campanha">
+                        <img class="icon_campanha" src="/doa_vida/imgs/o-email.png" alt="">E-mail para contato:
+                    </label>
+                    <input required type="email" name="email_campanha" id="email_campanha">
+                </div>
+
+                <div class="input-grupo">
+                    <label for="telefone_campanha">
+                        <img class="icon_campanha" src="/doa_vida/imgs/telefone.png" alt="">Telefone para contato:
+                    </label>
+                    <input required type="tel" name="telefone_campanha" id="telefone_campanha">
+                </div>
             </div>
 
             <div class="form-group">
-                <img class="icon_campanha" src="./imgs/telefone.png" alt="">
-                <label for="telefone_campanha">Telefone para contato:</label>
-                <input type="tel" name="telefone_campanha" id="telefone_campanha">
+                <div class="input-grupo">
+                    <label for="data_inicio">Inicio da Campanha:</label>
+                    <input required type="date" name="data_inicio" id="data_inicio">
+                </div>
+
+                <div class="input-grupo">
+                    <label for="data_fim">Termino da Campanha:</label>
+                    <input required type="date" name="data_fim" id="data_fim">
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="data_inicio">Data de Inicio da Campanha:</label>
-                <input type="date" name="data_inicio" id="data_inicio">
-
-                <label for="data_fim">Data de Termino da Campanha:</label>
-                <input type="date" name="data_fim" id="data_fim">
+                <div class="input-grupo">
+                    <label for="tipos_sangue">Tipo Sanguineo</label>
+                    <select id="input-tipoSanguineo" name="tipo_sanguineo">
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                
+                <button class="btn-cadastarCampanha">Cadastrar</button>
             </div>
         </div>
-
-
-        <label for="tipos_sangue"></label>
-        <select id="form-tipo" name="tipo_sanguineo">
-            <option value="a+">A+</option>
-            <option value="a-">A-</option>
-            <option value="b+">B+</option>
-            <option value="b-">B-</option>
-            <option value="ab+">AB+</option>
-            <option value="ab-">AB-</option>
-            <option value="o+">O+</option>
-            <option value="o-">O-</option>
-        </select>
-
-        <button class="submit-button">Enviar</button>
     </form>
 </main>
 </body>

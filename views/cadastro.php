@@ -68,7 +68,7 @@
             <label for="estado">Estado *</label>
             <select id="estado" name="estado" required>
                 <option value="">Selecione...</option>
-                <option value="MA">Maranhão</option>
+                <option value="Maranhão">Maranhão</option>
             </select>
 
             <label for="cidade">Cidade *</label>

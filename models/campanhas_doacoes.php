@@ -3,7 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/configs/conexao.php';
 
 class Campanhas
 {
-    public $id_campanha;
+    public $id_campanhas;
     public $hospital;
     public $nome_campanha;
     public $descricao;
@@ -46,6 +46,25 @@ class Campanhas
 
             $resultado = $stmt->fetchAll();
             return($resultado);
+
+        } catch (PDOException $erro) {
+            echo $erro->getMessage();
+        }
+    }
+    
+    static function mostrarCampanhaId($id_campanhas)
+    {
+        try {
+            $conn = Conexao::conectar();
+            $sql = 'SELECT * FROM campanhas_de_doacoes WHERE id_campanhas = :id';
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(':id', $id_campanhas);
+
+            $stmt->execute();
+
+            $resultado = $stmt->fetch();
+           
+            return $resultado;
 
         } catch (PDOException $erro) {
             echo $erro->getMessage();

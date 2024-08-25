@@ -15,23 +15,23 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/auth/auth.php';
 </head>
 
 <body>
-    <main id="conteudo-principal">
+    <header id="menus">
         <aside id="menu-lateral">
-            <img src="../imgs/logo-doe-vida.png" alt="" id="logo-doe-vida" />
+            <img src="/doa_vida/imgs/logo-doe-vida.png" alt="" id="logo-doe-vida" />
             <nav id="nav-menu-lateral">
                 <div class="btn-menu-lateral">
-                    <a href="../index.php" class="link-menu-lateral"><img
-                            src="../imgs/inicio-icon.svg"
+                    <a href="/doa_vida/index.php" class="link-menu-lateral"><img
+                            src="/doa_vida/imgs/inicio-icon.svg"
                             alt=""
                             class="icon-menu-lateral" />Início</a>
                 </div>
-                
+
                 <?php
                 if (Auth::estarLogado()) :
                 ?>
                     <div class="btn-menu-lateral">
-                        <a href="perfil.php" class="link-menu-lateral"><img
-                                src="../imgs/perfil-icon.svg"
+                        <a href="/doa_vida/views/perfil.php" class="link-menu-lateral"><img
+                                src="/doa_vida/imgs/perfil-icon.svg"
                                 alt=""
                                 class="icon-menu-lateral" />Perfil</a>
                     </div>
@@ -40,43 +40,47 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/auth/auth.php';
 
                 <div class="btn-menu-lateral">
                     <a href="#" class="link-menu-lateral"><img
-                            src="../imgs/cruz-icon1.0.svg"
+                            src="/doa_vida/imgs/cruz-icon1.0.svg"
                             alt=""
                             class="icon-menu-lateral" />Histórico</a>
                 </div>
                 <div class="btn-menu-lateral">
-                    <a href="campanhas.php" class="link-menu-lateral"><img
-                            src="../imgs/campanhas-icon.svg"
+                    <a href="/doa_vida/views/campanhas.php" class="link-menu-lateral"><img
+                            src="/doa_vida/imgs/campanhas-icon.svg"
                             alt=""
                             class="icon-menu-lateral" />Campanhas</a>
                 </div>
                 <div class="btn-menu-lateral">
                     <a href="#" class="link-menu-lateral"><img
-                            src="../imgs/sangue-icon.svg"
+                            src="/doa_vida/imgs/sangue-icon.svg"
                             alt=""
                             class="icon-menu-lateral" />Doadores</a>
                 </div>
                 <div class="btn-menu-lateral">
-                    <a href="perguntas.php" class="link-menu-lateral"><img
-                            src="../imgs/perguntas-icon.svg"
+                    <a href="/doa_vida/views/perguntas.php" class="link-menu-lateral"><img
+                            src="/doa_vida/imgs/perguntas-icon.svg"
                             alt=""
                             class="icon-menu-lateral" />Pergunta</a>
+                </div>
+                <div class="btn-sair">
+                    <a href="/doa_vida/controllers/logout_controller.php">Sair</a>
                 </div>
             </nav>
             <h1>&copy; Doe Vida</h1>
         </aside>
 
-        <div id="div-tela-inical">
-            <header id="cabecalho-tela-inicial">
-                <h1>Olá, <span><?= Auth::estarLogado() ? $_SESSION['nome_doador'] : 'Usuário' ?></span></h1>
-                <a href="/doa_vida/views/login.php" id="btn-perfil-usuario">
-                    <span class="dados-usuario">
-                        <h1><?= Auth::estarLogado() ? $_SESSION['nome_doador'] : 'Usuário' ?></h1>
-                        <p><?= Auth::estarLogado() ? $_SESSION['tipo_sanguineo'] : '' ?></p>
-                    </span>
-                    <span class="icon-menu-superior">
-                        <img src="../imgs/perfil-icon.svg" alt="" />
-                    </span>
-                </a>
-                <a href="/doa_vida/controllers/logout_controller.php">Sair</a>
-            </header>
+        <div id="menu-superior">
+            <h1>Olá, <span><?= Auth::estarLogado() ? $_SESSION['nome_doador'] : 'Usuário' ?></span></h1>
+            <a href="/doa_vida/views/login.php" id="btn-perfil-usuario">
+                <span class="dados-usuario">
+                    <h1><?= Auth::estarLogado() ? $_SESSION['nome_doador'] : 'Usuário' ?></h1>
+                    <p><?= Auth::estarLogado() ? $_SESSION['tipo_sanguineo'] : '' ?></p>
+                </span>
+                <span class="icon-menu-superior">
+                    <img src="/doa_vida/imgs/perfil-icon.svg" alt="" />
+                </span>
+            </a>
+        </div>
+    </header>
+
+    <main id="conteudo-principal">
