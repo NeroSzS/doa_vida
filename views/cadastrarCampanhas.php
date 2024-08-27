@@ -2,6 +2,12 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/views/__cabecalho.php';
 ?>
 <main id="conteudo-campanhas">
+    <?php if(isset($_COOKIE['aviso'])):?>
+        <h1><?= $_COOKIE['aviso']?></h1>
+        <?php
+            setcookie('aviso', '', time() - 3600, '/doa_vida/');
+        ?>
+    <?php endif;?>
     <h1 class="title_campanhas title_novaCampanha">Nova Campanha</h1>
 
     <form name="dados_campanha" method="post" action="/doa_vida/controllers/cadastrar_campanhas_controller.php" enctype="multipart/form-data" id="form_novaCampanha">

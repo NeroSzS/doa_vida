@@ -41,3 +41,34 @@ function displayImage(input) {
   }
 }
 // Fim da Logica Campanhas
+
+// Logica da Carrossel
+let slideIndex = 0;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    const slidesToShow = 3; // Número de slides a serem exibidos de uma vez
+    if (index >= totalSlides / slidesToShow) slideIndex = 0;
+    if (index < 0) slideIndex = Math.ceil(totalSlides / slidesToShow) - 1;
+    slides.forEach((slide, i) => {
+        slide.style.transform = `translateX(-${slideIndex * 300 / slidesToShow}%)`;
+    });
+}
+
+function nextSlide() {
+    slideIndex++;
+    showSlide(slideIndex);
+}
+
+function prevSlide() {
+    slideIndex--;
+    showSlide(slideIndex);
+}
+
+// Inicializa o carrossel
+showSlide(slideIndex);
+
+// Opcional: adicionar funcionalidade automática
+setInterval(nextSlide, 5000); // Muda a imagem a cada 5 segundos
+// Fim da Logica da Carrossel

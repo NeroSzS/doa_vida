@@ -8,16 +8,16 @@ session_start();
 $id_doador = $_POST['id_doador'];
 $id_endereco = $_POST['id_endereco'];
 
-$telefone = $_POST['telefone'];
+$telefone = htmlspecialchars($_POST['telefone']);
 $email = $_POST['email'];
 
-$cep = $_POST['cep'];
-$estado = $_POST['estado'];
-$cidade = $_POST['cidade'];
-$logradouro = $_POST['logradouro'];
-$numero_casa = $_POST['numeroCasa'];
-$complemento = $_POST['complemento'];
-$bairro = $_POST['bairro'];
+$cep = htmlspecialchars($_POST['cep']);
+$estado = htmlspecialchars($_POST['estado']);
+$cidade = htmlspecialchars($_POST['cidade']);
+$logradouro = htmlspecialchars($_POST['logradouro']);
+$numero_casa = htmlspecialchars($_POST['numeroCasa']);
+$complemento = htmlspecialchars($_POST['complemento']);
+$bairro = htmlspecialchars($_POST['bairro']);
 
 $doador = new Doador($id_doador);
 $doador->telefone = $telefone;

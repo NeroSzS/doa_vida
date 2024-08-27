@@ -10,6 +10,13 @@
 </head>
 
 <body>
+    <?php if(isset($_COOKIE['aviso'])):?>
+        <h1><?= $_COOKIE['aviso']?></h1>
+        <?php
+            setcookie('aviso', '', time() - 3600, '/doa_vida/');
+        ?>
+    <?php endif;?>
+
     <main id="conteudo-login">
         <img src="../imgs/gif_tela-inicial.gif" alt="" id="gif-login" />
         <div id="conteudo-formLogin">

@@ -35,13 +35,20 @@ class Auth
 
                 header('Location: /doa_vida/index.php');
                 exit();
+            } else {
+                setcookie('aviso', 'Você errou o E-mail ou a Senha!!!', time() + 3600, '/doa_vida/');
+                header('Location: /doa_vida/views/login.php');
+                exit();
             }
 
             // Verifica se é uma clínica
             $sqlClinica = 'SELECT * FROM clinicas WHERE email = :email';
+
             $stmtClinica = $conn->prepare($sqlClinica);
             $stmtClinica->bindValue(':email', $email);
+
             $stmtClinica->execute();
+            
             $resultadoClinica = $stmtClinica->fetch();
 
             if (!empty($resultadoClinica) && password_verify($senha, $resultadoClinica['senha'])) {
@@ -53,7 +60,12 @@ class Auth
 
                 header('Location: /doa_vida/index.php');
                 exit();
+            }  else {
+                setcookie('aviso', 'Você errou o E-mail ou a Senha!!!', time() + 3600, '/doa_vida/');
+                header('Location: /doa_vida/views/login.php');
+                exit();
             }
+
         } catch (PDOException $erro) {
             echo $erro->getMessage();
         }

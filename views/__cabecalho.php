@@ -1,5 +1,10 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/auth/auth.php';
+
+if (!Auth::estarLogado()) {
+    header('Location: /doa_vida/views/login.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +76,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/auth/auth.php';
 
         <div id="menu-superior">
             <h1>Olá, <span><?= Auth::estarLogado() ? $_SESSION['nome_doador'] : 'Usuário' ?></span></h1>
-            <a href="/doa_vida/views/login.php" id="btn-perfil-usuario">
+            <div href="/doa_vida/views/login.php" id="btn-perfil-usuario">
                 <span class="dados-usuario">
                     <h1><?= Auth::estarLogado() ? $_SESSION['nome_doador'] : 'Usuário' ?></h1>
                     <p><?= Auth::estarLogado() ? $_SESSION['tipo_sanguineo'] : '' ?></p>
@@ -79,7 +84,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/auth/auth.php';
                 <span class="icon-menu-superior">
                     <img src="/doa_vida/imgs/perfil-icon.svg" alt="" />
                 </span>
-            </a>
+            </div>
         </div>
     </header>
 

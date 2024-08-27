@@ -1,17 +1,31 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/models/campanhas_doacoes.php';
 
-$hospital = $_POST['hospital'];
-$nome_campanha = $_POST['nome_campanha'];
-$descricao = $_POST['descricao'];
-$data_inicio = $_POST['data_inicio'];
-$data_fim = $_POST['data_fim'];
-$email_campanha = $_POST['email_campanha'];
-$telefone_campanha = $_POST['telefone_campanha'];
-$tipo_sanguineo = $_POST['tipo_sanguineo'];
+$hospital = htmlspecialchars($_POST['hospital']);
+$nome_campanha = htmlspecialchars($_POST['nome_campanha']);
+$descricao = htmlspecialchars($_POST['descricao']);
+$data_inicio = htmlspecialchars($_POST['data_inicio']);
+$data_fim = htmlspecialchars($_POST['data_fim']);
+$email_campanha = htmlspecialchars($_POST['email_campanha']);
+$telefone_campanha = htmlspecialchars($_POST['telefone_campanha']);
+$tipo_sanguineo = htmlspecialchars($_POST['tipo_sanguineo']);
 
 if(!empty($_FILES['imagem_campanha']['tmp_name'])){
-    $imagem_campanha = file_get_contents($_FILES['imagem_campanha']['tmp_name']);
+    $permitidos = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    $tipo_arquivo = mime_content_type($_FILES['imagem_campanha']['tmp_name']); 
+    if(in_array( $tipo_arquivo, $permitidos)) {
+        if($_FILES['imagem_campanha']['size'] <= 5 * 1024 * 1024) {
+            $imagem_campanha = file_get_contents($_FILES['imagem_campanha']['tmp_name']);
+        } else {
+            setcookie('aviso', 'Tamanho do Arquivo não permitido', time() + 3600, '/doa_vida/');
+            header('Location: /doa_vida/views/cadastrarCampanhas.php');
+            exit();
+        }
+    } else {
+        setcookie('aviso', 'Tipo de Arquivo não permitido', time() + 3600, '/doa_vida/');
+        header('Location: /doa_vida/views/cadastrarCampanhas.php');
+        exit();
+    }
 };
 
 $campanha = new Campanhas();

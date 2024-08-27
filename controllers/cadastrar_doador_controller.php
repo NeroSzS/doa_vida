@@ -4,17 +4,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/models/endereco.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/models/doador_endereco.php';
 
 
-
-$nomeCompleto = $_POST['nomeCompleto'];
-$cpf = $_POST['cpf'];
-$rg = $_POST['rg'];
-$nomeMae = $_POST['nomeMae'];
-$nomePai = $_POST['nomePai'];
-$telefone = $_POST['celular'];
-$sexo = $_POST['sexo'];
+$nomeCompleto = htmlspecialchars($_POST['nomeCompleto']);
+$cpf = htmlspecialchars($_POST['cpf']);
+$rg = htmlspecialchars($_POST['rg']);
+$nomeMae = htmlspecialchars($_POST['nomeMae']);
+$nomePai = htmlspecialchars($_POST['nomePai']);
+$telefone = htmlspecialchars($_POST['celular']);
+$sexo = htmlspecialchars($_POST['sexo']);
 $dataNascimento = $_POST['dataNascimento'];
-$tipoSanguineo = $_POST['tipoSanguineo'];
-$email = $_POST['email_cadastro'];
+$tipoSanguineo = htmlspecialchars($_POST['tipoSanguineo']);
+if(filter_var($_POST['email_cadastro'], FILTER_VALIDATE_EMAIL)){
+    $email = filter_var($_POST['email_cadastro'], FILTER_SANITIZE_EMAIL);
+};
 $senha = $_POST['senha_cadastro'];
 $senha = password_hash($senha, PASSWORD_DEFAULT);
 
@@ -33,13 +34,13 @@ $doador->senha = $senha;
 
 $id_doador = $doador->cadastrarDoador();
 
-$cep = $_POST['cep'];
-$estado = $_POST['estado'];
-$cidade = $_POST['cidade'];
-$logradouro = $_POST['logradouro'];
-$numero_casa = $_POST['numeroCasa'];
-$complemento = $_POST['complemento'];
-$bairro = $_POST['bairro'];
+$cep = htmlspecialchars($_POST['cep']);
+$estado = htmlspecialchars($_POST['estado']);
+$cidade = htmlspecialchars($_POST['cidade']);
+$logradouro = htmlspecialchars($_POST['logradouro']);
+$numero_casa = htmlspecialchars($_POST['numeroCasa']);
+$complemento = htmlspecialchars($_POST['complemento']);
+$bairro = htmlspecialchars($_POST['bairro']);
 
 $endereco = new Endereco();
 $endereco->cep = $cep;
