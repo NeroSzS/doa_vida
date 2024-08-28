@@ -1,5 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/models/campanhas_doacoes.php';
+session_start();
+
 
 $hospital = htmlspecialchars($_POST['hospital']);
 $nome_campanha = htmlspecialchars($_POST['nome_campanha']);
@@ -9,6 +11,8 @@ $data_fim = htmlspecialchars($_POST['data_fim']);
 $email_campanha = htmlspecialchars($_POST['email_campanha']);
 $telefone_campanha = htmlspecialchars($_POST['telefone_campanha']);
 $tipo_sanguineo = htmlspecialchars($_POST['tipo_sanguineo']);
+$id_clinica = $_SESSION['id_clinica'];
+
 
 if(!empty($_FILES['imagem_campanha']['tmp_name'])){
     $permitidos = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
@@ -37,6 +41,7 @@ $campanha->data_fim = $data_fim;
 $campanha->telefone_campanha = $telefone_campanha;
 $campanha->email_campanha = $email_campanha;
 $campanha->tipo_sanguineo = $tipo_sanguineo;
+$campanha->id_clinica = $id_clinica;
 
 if(isset($imagem_campanha)){
     $campanha->imagem_campanha = $imagem_campanha;

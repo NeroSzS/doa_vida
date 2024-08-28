@@ -55,7 +55,9 @@ CREATE TABLE campanhas_de_doacoes (
     email VARCHAR(255) NOT NULL,
     telefone VARCHAR(255) NOT NULL, 
     tipo_sanguineo ENUM('A+', 'B+', 'AB+', 'O+', 'A-', 'B-', 'AB-', 'O-') NOT NULL,
-    imagem_campanha LONGBLOB
+    imagem_campanha LONGBLOB,
+    id_clinica INT,
+    FOREIGN KEY (id_clinica) REFERENCES clinicas(id_clinica)
 );
 
 -- Criação da tabela doador_endereço
@@ -85,9 +87,9 @@ CREATE TABLE agendamento(
     id_agendamento INT AUTO_INCREMENT PRIMARY KEY,
     data_doacao DATE NOT NULL,
     id_doador INT,
-    id_clinica INT,
+    id_campanhas INT,
     FOREIGN KEY (id_doador) REFERENCES doadores (id_doador),
-    FOREIGN KEY (id_clinica) REFERENCES clinicas (id_clinica)
+    FOREIGN KEY (id_campanhas) REFERENCES campanhas_de_doacoes (id_campanhas)
 );
 
 CREATE TABLE historico_doacao (

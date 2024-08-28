@@ -13,12 +13,13 @@ class Campanhas
     public $telefone_campanha;
     public $tipo_sanguineo;
     public $imagem_campanha;
+    public $id_clinica;
 
     public function cadastrarCampanha()
     {
         try {
             $conn = Conexao::conectar();
-            $sql = 'INSERT INTO campanhas_de_doacoes (hospital, nome_campanha, descricao, data_inicio, data_fim, email, telefone, tipo_sanguineo, imagem_campanha) VALUES (:hospital, :nome_campanha, :descricao, :data_inicio, :data_fim, :email, :telefone, :tipo_sanguineo, :imagem_campanha)';
+            $sql = 'INSERT INTO campanhas_de_doacoes (hospital, nome_campanha, descricao, data_inicio, data_fim, email, telefone, tipo_sanguineo, imagem_campanha, id_clinica) VALUES (:hospital, :nome_campanha, :descricao, :data_inicio, :data_fim, :email, :telefone, :tipo_sanguineo, :imagem_campanha, :id_clinica)';
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':hospital', $this->hospital);
             $stmt->bindValue(':nome_campanha', $this->nome_campanha);
@@ -29,6 +30,8 @@ class Campanhas
             $stmt->bindValue(':telefone', $this->telefone_campanha);
             $stmt->bindValue(':tipo_sanguineo', $this->tipo_sanguineo);
             $stmt->bindValue(':imagem_campanha', $this->imagem_campanha);
+            $stmt->bindValue(':id_clinica', $this->id_clinica);
+
 
             $stmt->execute();
         } catch (PDOException $erro) {

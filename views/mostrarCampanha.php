@@ -31,10 +31,11 @@ $mostar_campanha = Campanhas::mostrarCampanhaId($id_campanhas);
 
     <p class="paragrafo_campanha"><?= htmlspecialchars($mostar_campanha['descricao']) ?></p>
 
-    <form action="" method="post" id="form_agendamento">
+    <form action="/doa_vida/controllers/agendamento_controller.php" method="post" id="form_agendamento">
       <label for="data_fim">Agendamento</label>
       <div class="inputs_grupo">
-        <input required type="date" name="data_fim" min="<?= $mostar_campanha['data_inicio'] ?>" max="<?= $mostar_campanha['data_fim'] ?>" class="input_agendamento">
+        <input type="hidden" name="id_clinica" value="<?= $mostar_campanha['id_clinica']?>">
+        <input required type="date" name="data_agendamento" min="<?= $mostar_campanha['data_inicio'] ?>" max="<?= $mostar_campanha['data_fim'] ?>" class="input_agendamento">
         <input type="submit" value="Agendar" class="input_agendamento btn_agendamento">
       </div>
     </form>
