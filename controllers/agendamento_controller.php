@@ -1,7 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/models/agendamento.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/models/doador.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/models/campanhas_de_doacoes.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/models/campanhas_doacoes.php';
+
 session_start();
 
 
@@ -10,8 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data_doacao = $_POST['data_agendamento'];
     $id_doador = $_SESSION['id_doador'];
     $id_campanhas = $_POST['id_campanhas'];
+    $id_clinica = $_POST['id_clinica'];
 
-    if ($id_doador && $id_clinica) {
+
+    if ($id_doador && $id_clinica && $id_campanhas) {
         Agendamento::criarAgendamento($data_doacao, $id_doador, $id_campanhas);
 
         header('Location: /doa_vida/index.php');

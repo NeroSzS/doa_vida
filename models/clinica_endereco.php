@@ -64,7 +64,7 @@ class ClinicaEndereco
             $stmt->bindValue(':id_clinica', $id_clinica);
             $stmt->execute();
 
-            $resultado = $stmt->fetchAll();
+            $resultado = $stmt->fetch();
             return $resultado;
         } catch (PDOException $erro) {
             echo $erro->getMessage();

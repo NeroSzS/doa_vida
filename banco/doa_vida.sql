@@ -88,8 +88,11 @@ CREATE TABLE agendamento(
     data_doacao DATE NOT NULL,
     id_doador INT,
     id_campanhas INT,
+    id_clinica INT,
     FOREIGN KEY (id_doador) REFERENCES doadores (id_doador),
     FOREIGN KEY (id_campanhas) REFERENCES campanhas_de_doacoes (id_campanhas)
+    FOREIGN KEY (id_clinica) REFERENCES clinicas(id_clinica)
+
 );
 
 CREATE TABLE historico_doacao (

@@ -73,4 +73,13 @@ class Campanhas
             echo $erro->getMessage();
         }
     }
+
+    public static function CampanhasAgendadas($id_doador) {
+        $conn = Conexao::conectar();
+        $sql = 'SELECT * FROM agendamento WHERE id_doador = :id_doador';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id_doador', $id_doador);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }

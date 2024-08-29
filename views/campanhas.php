@@ -7,9 +7,11 @@ $listagem_campanha = Campanhas::listarCampanhas();
 <main id="conteudo-campanhas">
   <div id="cabecalho_addCampanhas">
     <h1 class="title_campanhas">Campanhas de Doações</h1>
-    <a href="cadastrarCampanhas.php" id="btn_add_campanha">
-      <img src="/doa_vida/imgs/adicionar-icon.svg" alt="">
-    </a>
+    <?php if (Auth::eClinica()) :?>
+      <a href="cadastrarCampanhas.php" id="btn_add_campanha">
+        <img src="/doa_vida/imgs/adicionar-icon.svg" alt="">
+      </a>
+    <?php endif; ?>
   </div>
 
   <div id="div_campanhas">

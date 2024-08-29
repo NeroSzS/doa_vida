@@ -35,6 +35,7 @@ $mostar_campanha = Campanhas::mostrarCampanhaId($id_campanhas);
       <label for="data_fim">Agendamento</label>
       <div class="inputs_grupo">
         <input type="hidden" name="id_clinica" value="<?= $mostar_campanha['id_clinica']?>">
+        <input type="hidden" name="id_campanhas" value="<?= ($mostar_campanha['id_campanhas']) ?>">
         <input required type="date" name="data_agendamento" min="<?= $mostar_campanha['data_inicio'] ?>" max="<?= $mostar_campanha['data_fim'] ?>" class="input_agendamento">
         <input type="submit" value="Agendar" class="input_agendamento btn_agendamento">
       </div>

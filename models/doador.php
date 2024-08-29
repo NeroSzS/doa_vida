@@ -94,7 +94,21 @@ class Doador {
         } catch (PDOException $erro) {
             echo $erro->getMessage();
         }
-    } 
+    }
+    
+    static function listarDoador()
+    {
+        try {
+            $conn = Conexao::conectar();
+            $sql = 'SELECT * FROM doadores';
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
 
+            $resultado = $stmt->fetchAll();
+            return($resultado);
 
+        } catch (PDOException $erro) {
+            echo $erro->getMessage();
+        }
+    }
 }
