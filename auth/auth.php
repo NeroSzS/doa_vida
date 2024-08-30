@@ -45,6 +45,8 @@ class Auth
             $_SESSION['nome_fantasia'] = $resultadoClinica['nome_fantasia'];
             $_SESSION['cnpj'] = $resultadoClinica['cnpj'];
             $_SESSION['email'] = $resultadoClinica['email'];
+            $_SESSION['telefone'] = $resultadoClinica['telefone'];
+
             $_SESSION['e_clinica'] = $resultadoClinica['e_clinica'];
 
             header('Location: /doa_vida/index.php');

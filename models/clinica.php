@@ -8,6 +8,7 @@ class Clinica
     public $nome_fantasia;
     public $cnpj;
     public $email;
+    public $telefone;
     public $senha;
 
     public function __construct($id = false)
@@ -34,6 +35,8 @@ class Clinica
             $this->nome_fantasia = $resultado['nome_fantasia'];
             $this->cnpj = $resultado['cnpj'];
             $this->email = $resultado['email'];
+            $this->telefone = $resultado['telefone'];
+
         } catch (Exception $e) {
             echo $e->getMessage();
         }

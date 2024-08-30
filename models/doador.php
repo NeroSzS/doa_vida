@@ -111,4 +111,23 @@ class Doador {
             echo $erro->getMessage();
         }
     }
+
+    static function mostrarDoadorId($id_doador)
+    {
+        try {
+            $conn = Conexao::conectar();
+            $sql = 'SELECT * FROM doadores WHERE id_doador = :id_doador';
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(':id_doador', $id_doador);
+
+            $stmt->execute();
+
+            $resultado = $stmt->fetch();
+           
+            return $resultado;
+
+        } catch (PDOException $erro) {
+            echo $erro->getMessage();
+        }
+    }
 }

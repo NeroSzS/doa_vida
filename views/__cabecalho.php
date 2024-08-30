@@ -43,24 +43,30 @@ if (!Auth::estarLogado()) {
 
                 <?php endif; ?>
 
-                <div class="btn-menu-lateral">
-                    <a href="#" class="link-menu-lateral"><img
-                            src="/doa_vida/imgs/cruz-icon1.0.svg"
-                            alt=""
-                            class="icon-menu-lateral" />Histórico</a>
-                </div>
+                <?php if (!Auth::eClinica()) :?>
+                    <div class="btn-menu-lateral">
+                        <a href="#" class="link-menu-lateral"><img
+                                src="/doa_vida/imgs/cruz-icon1.0.svg"
+                                alt=""
+                                class="icon-menu-lateral" />Histórico</a>
+                    </div>
+                <?php endif; ?>
+
                 <div class="btn-menu-lateral">
                     <a href="/doa_vida/views/campanhas.php" class="link-menu-lateral"><img
                             src="/doa_vida/imgs/campanhas-icon.svg"
                             alt=""
                             class="icon-menu-lateral" />Campanhas</a>
                 </div>
-                <div class="btn-menu-lateral">
-                    <a href="/doa_vida/views/doadores.php" class="link-menu-lateral"><img
+                <?php if (Auth::eClinica()) :?>
+                    <div class="btn-menu-lateral">
+                        <a href="/doa_vida/views/doadores.php" class="link-menu-lateral"><img
                             src="/doa_vida/imgs/sangue-icon.svg"
                             alt=""
-                            class="icon-menu-lateral" />Doadores</a>
-                </div>
+                            class="icon-menu-lateral" />Doadores
+                        </a>
+                    </div>
+                <?php endif; ?>
                 <div class="btn-menu-lateral">
                     <a href="/doa_vida/views/perguntas.php" class="link-menu-lateral"><img
                             src="/doa_vida/imgs/perguntas-icon.svg"
@@ -77,23 +83,22 @@ if (!Auth::estarLogado()) {
         <div id="menu-superior">
             <h1>Olá, 
                 <span>
-                    <?php if (Auth::estarLogado() && Auth::eClinica()) :?>
-                        <?= $_SESSION['nome_doador']?>
+                    <?php if (Auth::eClinica()) :?>
+                        <?= Auth::estarLogado() ? $_SESSION['nome_fantasia'] : 'Usuário' ?>
                         <?php else :?>
-                        'Usuário'
+                            <?= Auth::estarLogado() ? $_SESSION['nome_doador'] : 'Usuário' ?>
                     <?php endif; ?>
                 </span>
             </h1>
-            <h1>Olá, <span><?= Auth::estarLogado() ? $_SESSION['nome_doador'] : 'Usuário' ?></span></h1>
+
             <div href="/doa_vida/views/login.php" id="btn-perfil-usuario">
                 <span class="dados-usuario">
-                    <?php if (Auth::estarLogado() && Auth::eClinica()) :?>
-                        <?= $_SESSION['nome_doador']?>
+                    <?php if (Auth::eClinica()) :?>
+                        <h1><?= Auth::estarLogado() ? $_SESSION['nome_fantasia'] : 'Usuário' ?></h1>
                         <?php else :?>
-                        'Usuário'
+                            <h1><?= Auth::estarLogado() ? $_SESSION['nome_doador'] : 'Usuário' ?></h1>
+                            <p><?= Auth::estarLogado() ? $_SESSION['tipo_sanguineo'] : '' ?></p>
                     <?php endif; ?>
-                    <h1><?= Auth::estarLogado() ? $_SESSION['nome_doador'] : 'Usuário' ?></h1>
-                    <p><?= Auth::estarLogado() ? $_SESSION['tipo_sanguineo'] : '' ?></p>
                 </span>
                 <span class="icon-menu-superior">
                     <img src="/doa_vida/imgs/perfil-icon.svg" alt="" />

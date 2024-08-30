@@ -52,7 +52,7 @@ function showSlide(index) {
     if (index >= totalSlides / slidesToShow) slideIndex = 0;
     if (index < 0) slideIndex = Math.ceil(totalSlides / slidesToShow) - 1;
     slides.forEach((slide, i) => {
-        slide.style.transform = `translateX(-${slideIndex * 300 / slidesToShow}%)`;
+        slide.style.transform = `translateX(-${slideIndex * 900 / slidesToShow}%)`;
     });
 }
 

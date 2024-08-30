@@ -24,7 +24,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/views/__cabecalho.php';
         <div class="form-group">
                 <div class="input-grupo">
                     <label for="hospital">Hospital:</label>
-                    <input required type="text" name="hospital" id="hospital">
+                    <input required type="text" name="hospital" id="hospital" value="<?= $_SESSION['nome_fantasia']?>">
                 </div>
 
                 <div class="input-grupo">
@@ -45,14 +45,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/doa_vida/views/__cabecalho.php';
                     <label for="email_campanha">
                         <img class="icon_campanha" src="/doa_vida/imgs/o-email.png" alt="">E-mail para contato:
                     </label>
-                    <input required type="email" name="email_campanha" id="email_campanha">
+                    <input required type="email" name="email_campanha" id="email_campanha" value="<?= $_SESSION['email']?>">
                 </div>
 
                 <div class="input-grupo">
                     <label for="telefone_campanha">
                         <img class="icon_campanha" src="/doa_vida/imgs/telefone.png" alt="">Telefone para contato:
                     </label>
-                    <input required type="tel" name="telefone_campanha" id="telefone_campanha">
+                    <input required type="tel" name="telefone_campanha" id="telefone_campanha" value="<?= $_SESSION['telefone']?>">
                 </div>
             </div>
 
