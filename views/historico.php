@@ -20,7 +20,6 @@ if(Auth::estarLogado() && !Auth::eClinica()) {
                         <p><?= date_format(date_create($campanha['data_doacao']), 'd/m/Y') ?></p>
                     </div>
                 </div>
-                <a href="">Mais Detalhes</a>
             </div>
         <?php endforeach; ?>
     </div>
