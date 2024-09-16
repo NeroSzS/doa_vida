@@ -45,7 +45,7 @@ if (!Auth::estarLogado()) {
 
                 <?php if (!Auth::eClinica()) :?>
                     <div class="btn-menu-lateral">
-                        <a href="#" class="link-menu-lateral"><img
+                        <a href="/doa_vida/views/historico.php" class="link-menu-lateral"><img
                                 src="/doa_vida/imgs/cruz-icon1.0.svg"
                                 alt=""
                                 class="icon-menu-lateral" />Histórico</a>

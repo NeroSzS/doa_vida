@@ -20,10 +20,7 @@ class Agendamento
     {
         try {
             $conn = Conexao::conectar();
-            $sql = 'SELECT a.*, c.* 
-                FROM agendamento a 
-                JOIN campanhas c ON a.id_campanhas = c.id_campanhas 
-                WHERE a.id_doador = :id_doador';
+            $sql = 'SELECT a.data_doacao, c.id_campanhas, c.hospital, c.nome_campanha, c.descricao, c.data_inicio, c.data_fim, c.email AS email_campanha, c.telefone AS telefone_campanha, c.tipo_sanguineo, c.imagem_campanha FROM agendamento a JOIN campanhas_de_doacoes c ON a.id_campanhas = c.id_campanhas WHERE a.id_doador = :id_doador';
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':id_doador', $id_doador);
 

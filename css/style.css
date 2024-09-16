@@ -419,7 +419,8 @@ html {
 }
 
 #title_perfil,
-#title_editarPerfil {
+#title_editarPerfil, #title_historico {
+  font-family: var(--font-open-sans);
   text-align: center;
   color: var(--cor-vermelha);
   font-size: 3rem;
@@ -615,6 +616,13 @@ html {
 .card_campanhas {
   max-width: 400px;
   cursor: pointer;
+}
+
+#link_campanha {
+  text-decoration: none;
+  color: var(--cor-vermelha);
+  font-family: var(--font-open-sans);
+  font-size: 1rem;
 }
 
 .img_campanhas {
@@ -837,7 +845,7 @@ html {
 /*Fim da Tela Campanhas*/
 
 /* Estilizando a Tela de Doadores */
-#conteudo-doadores, #conteudo-mostrarDoador {
+#conteudo-doadores, #conteudo-mostrarDoador, #conteudo-historico {
   max-width: 100vw;
   max-height: 100%;
 }
@@ -942,3 +950,36 @@ html {
 }
 /* Fim Tela de Doadores */
 
+/* Estilizando a Tela de Historico */
+.card_historico {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px auto;
+  width: 80%;
+  border: 2px solid var(--cor-vermelha);
+  border-radius: 20px;
+  padding: 20px;
+  color: var(--cor-vermelha);
+  font-family: var(--font-open-sans);
+}
+
+.div_dados_historico {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.div_dados_historico > img {
+  height: 80px;
+}
+
+.dados_historico > h1 {
+  font-size: 2rem;
+}
+
+.dados_historico > p, .dados_historico > a {
+  color: var(--cor-preta);
+  font-size: 1.2rem;
+}
+/* Fim Tela de Historico */
